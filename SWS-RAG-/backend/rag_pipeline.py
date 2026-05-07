@@ -1,7 +1,3 @@
-# rag_pipeline.py
-# Complete RAG Pipeline for SWS AI Company Chatbot
-# Handles: PDF extraction → chunking → embedding → ChromaDB → retrieval → Ollama answer
-
 import os
 import re
 import json
