@@ -16,7 +16,7 @@ export default function Sidebar({ status, isIngesting, onIngest, onClear }) {
 
   return (
     <div style={{
-      background: "var(--blue-900)",
+      background: "#000000",
       display: "flex",
       flexDirection: "column",
       height: "100vh",
@@ -28,52 +28,13 @@ export default function Sidebar({ status, isIngesting, onIngest, onClear }) {
         padding: "28px 24px 20px",
         borderBottom: "1px solid rgba(255,255,255,0.08)"
       }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "6px" }}>
-          <div style={{
-            width: "38px", height: "38px",
-            background: "linear-gradient(135deg, #2563eb, #0ea5e9)",
-            borderRadius: "10px",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            fontSize: "18px"
-          }}>
-            🤖
-          </div>
-          <span style={{ fontSize: "20px", fontWeight: "700", color: "white" }}>
-            SWS <span style={{ color: "var(--blue-300)" }}>AI</span>
+        <div style={{ marginBottom: "6px" }}>
+          <span style={{ fontSize: "24px", fontWeight: "700", color: "white", letterSpacing: "-0.5px" }}>
+            SWS<span style={{ color: "#2563eb" }}> AI</span>
           </span>
         </div>
-        <div style={{ fontSize: "12px", color: "var(--gray-400)", letterSpacing: "0.3px" }}>
+        <div style={{ fontSize: "12px", color: "rgba(255,255,255,0.4)", letterSpacing: "0.3px" }}>
           Company Knowledge Assistant
-        </div>
-      </div>
-
-      {/* ── Status Badge ── */}
-      <div style={{
-        margin: "16px 20px 0",
-        padding: "12px 14px",
-        background: "rgba(14,165,233,0.1)",
-        border: "1px solid rgba(14,165,233,0.2)",
-        borderRadius: "10px",
-        display: "flex",
-        alignItems: "center",
-        gap: "10px"
-      }}>
-        <div style={{
-          width: "8px", height: "8px",
-          borderRadius: "50%",
-          background: status.ready ? "#22c55e" : "#f59e0b",
-          boxShadow: status.ready ? "0 0 6px #22c55e" : "0 0 6px #f59e0b",
-          flexShrink: 0
-        }} />
-        <div>
-          <div style={{ fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>
-            {status.ready ? "Knowledge base ready" : "No documents indexed"}
-          </div>
-          <div style={{ fontSize: "12px", color: "var(--blue-300)", fontWeight: "600" }}>
-            {status.ready
-              ? `${status.chunks_indexed} chunks indexed`
-              : "Click ingest to get started"}
-          </div>
         </div>
       </div>
 
@@ -87,7 +48,7 @@ export default function Sidebar({ status, isIngesting, onIngest, onClear }) {
             padding: "10px 16px",
             background: isIngesting
               ? "rgba(255,255,255,0.05)"
-              : "linear-gradient(135deg, var(--blue-600), var(--blue-500))",
+              : "#2563eb",
             border: "none",
             borderRadius: "10px",
             color: "white",
@@ -95,18 +56,10 @@ export default function Sidebar({ status, isIngesting, onIngest, onClear }) {
             fontSize: "14px",
             fontWeight: "600",
             cursor: isIngesting ? "not-allowed" : "pointer",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "8px",
             transition: "opacity 0.2s"
           }}
         >
-          {isIngesting ? (
-            <>⏳ Ingesting PDFs...</>
-          ) : (
-            <>📥 Ingest Documents</>
-          )}
+          {isIngesting ? "Ingesting PDFs..." : "Ingest Documents"}
         </button>
       </div>
 
@@ -117,7 +70,7 @@ export default function Sidebar({ status, isIngesting, onIngest, onClear }) {
         fontWeight: "700",
         letterSpacing: "1.2px",
         textTransform: "uppercase",
-        color: "var(--gray-400)"
+        color: "rgba(255,255,255,0.3)"
       }}>
         Company Documents
       </div>
@@ -138,17 +91,18 @@ export default function Sidebar({ status, isIngesting, onIngest, onClear }) {
             marginBottom: "2px",
           }}>
             <div style={{
-              width: "7px", height: "7px",
+              width: "6px", height: "6px",
               borderRadius: "50%",
-              background: status.ready ? "var(--blue-400)" : "var(--gray-400)",
+              background: status.ready ? "#2563eb" : "rgba(255,255,255,0.2)",
               flexShrink: 0
             }} />
             <span style={{
               fontSize: "12px",
-              color: status.ready ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.3)",
+              color: status.ready ? "rgba(255,255,255,0.6)" : "rgba(255,255,255,0.2)",
               whiteSpace: "nowrap",
               overflow: "hidden",
-              textOverflow: "ellipsis"
+              textOverflow: "ellipsis",
+              textTransform: "capitalize"
             }}>
               {doc.replace("SWS-AI-", "").replace(/-/g, " ")}
             </span>
@@ -163,21 +117,17 @@ export default function Sidebar({ status, isIngesting, onIngest, onClear }) {
           style={{
             width: "100%",
             padding: "10px 16px",
-            background: "rgba(255,255,255,0.07)",
+            background: "transparent",
             border: "1px solid rgba(255,255,255,0.12)",
             borderRadius: "10px",
-            color: "white",
+            color: "rgba(255,255,255,0.6)",
             fontFamily: "Livvic, sans-serif",
             fontSize: "14px",
             fontWeight: "500",
             cursor: "pointer",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "8px"
           }}
         >
-          ✨ New Conversation
+          New Conversation
         </button>
       </div>
 
